@@ -1,0 +1,31 @@
+@import './src/assets/scss/variables'; 
+@import './src/assets/scss/mixins'; 
+.login-wrapper{
+    padding: 4rem 0;
+    label{
+        line-height: 1;
+        font-weight: 400;
+    }
+    .form-control {
+        border-radius: 0;
+        height: 45px;
+        border-color: $border-color;
+    }
+    form{
+        @include box-shadow(0,2px,4px,rgba(70, 63, 95, 0.1));
+        padding: 0 15px 15px;
+        .header-text{
+            background: $black-bg;
+            color: $white-color;
+            padding: 12px 15px;
+            font-weight: 400;
+            color: $theme-color;
+            margin-top: 0;
+            font-size: $fs-20;
+            margin-bottom: 30px;
+        }
+        .btn-theme{
+            padding: 10px 20px !important
+        }
+    }
+}

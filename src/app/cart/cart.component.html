@@ -1,0 +1,96 @@
+<div class="inner-content-wrapper">
+    <div class="container-fluid breadcrum-wrapper">
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="breadcrum">
+                        <ul>
+                            <li>
+                                <a routerLink="/home">Home</a>
+                            </li>
+                            <li> > </li>
+                            <li>
+                                <a href="javascript:void(0)" class="activeBreadcrum">Cart</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row myAccount-rightPanel">
+                <ul class="nav nav-tabs cart-tabs">
+                    <li class="three" routerLinkActive="active">
+                        <a routerLink="shopping-cart">
+                        <span><i class="fa fa-circle"></i></span><br><br>
+                        Shopping Cart
+                        </a>
+                    </li>
+                    <li class="three" routerLinkActive="active">
+                        <a routerLink="shipping-address">
+                        <span><i class="fa fa-circle"></i></span><br><br>
+                        My Address
+                        </a>
+                    </li>
+                    <li class="three" routerLinkActive="active">
+                        <a routerLink="order-payment">
+                        <span><i class="fa fa-circle"></i></span><br><br>
+                        Order Payment
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="col-md-4">
+                <div class="shopping-cart-right">
+                    <h4 class="header">Summary</h4>
+                    <div class="summary-wrapper">
+                        <div>
+                        <h4>Selected Delivery Type</h4>
+                        <div>
+                            <label class="custom-radiobutton">Standard Delivery
+                                <input type="radio" name="radio" value="STANDARD">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radiobutton">Express Delivery
+                                <input type="radio" name="radio" value="EXPRESS" checked>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        </div>
+                        <br>
+                        <div>
+                        <table class="table table-bordered">
+                            <tbody><tr>
+                            <td>Sub Total</td>
+                            <td class="ng-binding">₹ 50</td>
+                            </tr>
+                            <tr>
+                            <td>Delivery Charges</td>
+                            <td>&#8377; 40</td>
+                            </tr>
+                            <tr>
+                            <td>Discount / Gift Coupon</td>
+                            <td>&#8377; 20</td>
+                            </tr>
+                            <tr>
+                            <td class="ng-binding">
+                                <b>Total Price</b> ( 1 <span>Item</span> )
+                            </td>
+                            <td class="secondary-color ng-binding">₹ 70</td>
+                            </tr>
+                        </tbody></table>
+                        </div>
+                        <div>
+                        <a class="btn-theme-dark btn" >Proceed To Pay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

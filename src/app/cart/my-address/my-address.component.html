@@ -1,0 +1,179 @@
+<div class="shopping-cart-left">
+    <h4 class="header">My Addresses
+      <button type="button" class="btn btn-theme pull-right add-new-btn" data-toggle="modal" data-target="#address-modal">Add New Address</button>
+    </h4>
+    <div class="address-items">
+      <ul class="selected-cart">
+        <div class="text-center secondary-color default-address margin-top-10"></div>
+        <li >
+          <div class="row">
+            <div class="col-md-9 col-sm-9">
+              <h4 class="uppercase">Amol Gawande (
+                <span >9028425167</span>)</h4>
+              <address>
+                <p class="uppercase">kapil towers, thrymr software, 5th floor. finanatal district, nnakramguda, hyd</p>
+                <p class="uppercase"></p>
+                <p class="uppercase">Hyderabad</p>
+                <p class="uppercase">Andhra Pradesh</p>
+                <p>
+                  <span class="uppercase">India</span> -
+                  <span >500032</span>
+                </p>
+              </address>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="actions">
+                <div class="text-center">
+                  <label class="radio-inline">
+                    <input type="radio" class="theme-color" name="adddress" checked="checked">Delivery Address</label>
+                  <br>
+                  <br>
+                  <div>
+                    <button type="button" name="button" class="btn btn-theme">Edit</button>
+                    <button type="button" name="button" class="btn btn-theme-dark">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li >
+          <div class="row">
+            <div class="col-md-9 col-sm-9">
+              <h4 class="uppercase">Amol (
+                <span >9028425167</span>)</h4>
+              <address>
+                <p class="uppercase">pooui mjjk</p>
+                <p class="uppercase">uyiyiy</p>
+                <p class="uppercase">Bhadrachalam</p>
+                <p class="uppercase">Andhra Pradesh</p>
+                <p>
+                  <span class="uppercase">India</span> -
+                  <span >500032</span>
+                </p>
+              </address>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="actions">
+                <div class="text-center">
+                  <label class="radio-inline">
+                    <input type="radio" class="theme-color" name="adddress">Delivery Address</label>
+                  <br>
+                  <br>
+                  <div>
+                    <button type="button" name="button" class="btn btn-theme">Edit</button>
+                    <button type="button" name="button" class="btn btn-theme-dark">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="text-center marginBottom-10">
+        <a routerLink="/cart/shopping-cart" class="btn btn-theme-dark"><i class="fa fa-chevron-left"></i> Back To Cart</a>
+    </div>
+</div>      
+
+
+<div id="address-modal" class="modal fade ng-scope in">
+    <div class="modal-dialog modal-lg">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <i class="fa fa-times"></i>
+          </button>
+          <h4 class="modal-title ng-binding">Add New Address</h4>
+        </div>
+        <div class="modal-body padding-top-0">
+          <form name="addressForm" id="address-form-in-cart" class="">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name">Name
+                    <i class="fas fa-asterisk mandatory-field"></i>
+                  </label>
+                  <input type="text" class="form-control " id="name" placeholder="Enter name" name="name" required="">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="mob">Mobile No
+                    <i class="fas fa-asterisk mandatory-field"></i>
+                  </label>
+                  <input type="text" class="form-control" id="mob" placeholder="Enter mobile no." maxlength="10" name="contactNumber" required="">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="add">Address
+                    <i class="fas fa-asterisk mandatory-field"></i>
+                  </label>
+                  <textarea rows="4" class="form-control " placeholder="Enter address" name="address" required=""></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="landmark">Land Mark</label>
+                  <input type="text" class="form-control ng-pristine ng-valid" id="landmark" placeholder="Enter Land Mark" name="landMark">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group position-relative">
+                  <label for="state">State
+                    <i class="fas fa-asterisk mandatory-field"></i>
+                  </label>
+                  <input type="text" class="form-control " id="state" placeholder="Enter state" name="state" required="">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group position-relative">
+                  <label for="city">City
+                    <i class="fas fa-asterisk mandatory-field"></i>
+                  </label>
+                  <input type="text" class="form-control " id="city" placeholder="Enter city" required="">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="country">Country<i class="fas fa-asterisk mandatory-field"></i></label>
+                    <input type="text" class="form-control" id="country" placeholder="Enter Country" name="country" required readonly>
+                  </div>
+                </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="pin">Pincode
+                    <i class="fas fa-asterisk mandatory-field"></i>
+                  </label>
+                  <input type="text" class="form-control" id="pin" placeholder="Enter pincode" maxlength="6" name="pinCode" pattern="/^[0-9]{6}$/" required="">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <p style="margin-bottom: 0px;margin-top:10px;">
+                  <i class="fas fa-asterisk mandatory-field"></i>&nbsp;&nbsp;marked fields are mandatory</p>
+              </div>
+            </div>
+            <hr>
+            <div class="text-center">
+              <button type="button" class="btn-theme btn margin-0">Submit</button> &nbsp;
+              <button type="button" class="btn-theme-dark btn margin-0" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+    </div>
+  </div>

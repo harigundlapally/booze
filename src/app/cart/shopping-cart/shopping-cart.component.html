@@ -1,0 +1,64 @@
+<div class="shopping-cart-left">
+  <h4 class="header">Shopping Cart (2 items)
+    <form action="" name="pincodeForm" class="pincode-form">
+      <span class="pull-right fs-14">Pincode <span class="fas fa-map-marker location-marker"></span>
+      <input type="text" class="change-address" name="pincode" pattern="/^[0-9]{6}$/" maxlength="6" required>
+        <button class="btn pin-btn">Check Availability</button>
+        <p class="checkAvailability-wrapper text-center"></p>
+      </span>
+    </form>
+  </h4>
+  <div class="cart-items">
+    <table class="table table-bordered shop-cart-table margin-0 marginTop-15">
+      <thead>
+        <tr>
+          <th style="width:50%">Product</th>
+          <th>Price</th>
+          <th style="width:16%">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a (click)="viewProductDetails(1)">
+              <img src="https://placehold.it/80x80" alt="">
+              <b>Manischewitz Concord</b>
+            </a>
+          </td>
+          <td>
+              <div class="form-group cart-input-group input-group">
+                  <span class="input-group-addon"><i class="fas fa-minus"></i></span>
+                  <input type="text" class="form-control" placeholder="1">
+                  <span class="input-group-addon"><i class="fas fa-plus"></i></span>
+              </div>
+              <p>₹ 50 x 1 = ₹ 50</p>
+          </td>
+          <td>
+              <a class="icons marginRight-15" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-heart"></i></a>
+              <a (click)="removeCartItem()" class="icons" data-toggle="tooltip" title="Remove Item From Cart"><i class="far fa-trash-alt"></i></a>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <a (click)="viewProductDetails(1)">
+                <img src="https://placehold.it/80x80" alt="">
+                <b>Manischewitz Concord</b>
+              </a>
+            </td>
+            <td>
+                <div class="form-group cart-input-group input-group">
+                    <span class="input-group-addon"><i class="fas fa-minus"></i></span>
+                    <input type="text" class="form-control" placeholder="1">
+                    <span class="input-group-addon"><i class="fas fa-plus"></i></span>
+                </div>
+                <p>₹ 50 x 1 = ₹ 50</p>
+            </td>
+            <td>
+                <a class="icons marginRight-15" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-heart"></i></a>
+                <a (click)="removeCartItem()" class="icons" data-toggle="tooltip" title="Remove Item From Cart"><i class="far fa-trash-alt"></i></a>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="main-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div id="spinner" *ngIf="loading"></div>
+      <div class="menu">
+        <app-navbar></app-navbar>
+      </div>
+      <div class="content">
+        <!-- <app-home></app-home> -->
+        <router-outlet></router-outlet>
+      </div>
+      <div class="footer">
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+</div>

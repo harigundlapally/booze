@@ -1,0 +1,289 @@
+@import 'variables';
+.margin-0{
+    margin: 0 !important;
+  }
+  .marginBottom-15{
+    margin-bottom: 15px !important;
+  }
+  .marginBottom-5{
+    margin-bottom: 5px !important;
+  }
+  .marginBottom-10{
+    margin-bottom: 10px !important;
+  }
+  .marginBottom-20{
+    margin-bottom: 20px !important;
+  }
+  .marginBottom-25{
+    margin-bottom: 25px !important;
+  }
+  .marginBottom-0{
+    margin-bottom: 0px !important;
+  }
+  .marginTop-0{
+    margin-top: 0px !important;
+  }
+  .marginTop-5{
+    margin-top: 5px !important;
+  }
+  .marginTop-10{
+    margin-top: 10px !important;
+  }
+  .marginTop-15{
+    margin-top: 15px !important;
+  }
+  .marginTop-20{
+    margin-top: 20px !important;
+  }
+  .marginTop-30{
+    margin-top: 30px !important;
+  }
+  .marginBottom-25{
+    margin-bottom: 25px !important;
+  }
+  .marginBottom-30{
+    margin-bottom: 30px !important;
+  }
+  .marginTop-40{
+    margin-top: 40px !important;
+  }
+  .marginRight-15{
+    margin-right: 15px !important;
+  }
+  .padding-0{
+    padding: 0 !important;
+  }
+  .padding-tb-0{
+    padding: 0 15px !important;
+  }
+  .paddingLeft-0{
+    padding-left: 0 !important;
+  }
+  .paddingRight-0{
+    padding-right: 0 !important;
+  }
+.theme-color{
+    color: $theme-color;
+    &:hover,&:focus{
+        color: $theme-color;
+    }
+}
+.btn-theme {
+    background-color: transparent;
+    border-radius: 0 !important;
+    text-align: right;
+    color:  $theme-color;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.875rem !important;
+    font-weight: 500;
+    border-color: $theme-color !important;
+    padding: 9px 20px !important;
+    &:hover{
+        color: $white-color !important;
+        background-color: $theme-color;
+    }
+    &:focus{
+        outline: 0 !important;
+    }
+}
+.btn-theme-dark {
+    background-color: $theme-color;
+    border-radius: 0 !important;
+    text-align: right;
+    color:  $white-color !important;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.875rem !important;
+    font-weight: 500;
+    border-color: $theme-color !important;
+    padding: 9px 20px !important;
+    &:hover{
+        color: $theme-color !important;
+        background-color: $white-bg;
+    }
+    &:focus{
+        outline: 0 !important;
+    }
+}
+.wishlist-container {
+    position: fixed;
+    background: $theme-color-2;
+    right: 0px;
+    padding: 10px;
+    top: 60px;
+    color: $white-color;
+    .device{
+        display: inline-block;
+        margin-right : 10px;
+        img{
+            height: 50px;
+        }
+    }
+    .check {
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        background: #666;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 10px;
+        text-align: center;
+    }
+}
+.form-group{
+    .form-control:not(textarea){
+        height: 40px !important;
+    }
+    .form-control{
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        border-color: $border-color !important;
+    }
+    .input-group-addon {
+        color: #555;
+        background-color: $grey-bg;
+        border: 1px solid $border-color;
+        border-radius: 0;
+    }
+}
+
+//radio styling
+.custom-radiobutton {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: $fs-14;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.custom-radiobutton input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.custom-radiobutton .checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+.custom-radiobutton:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.custom-radiobutton input:checked ~ .checkmark {
+    background-color: $theme-color;
+}
+.custom-radiobutton .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.custom-radiobutton input:checked ~ .checkmark:after {
+    display: block;
+}
+.custom-radiobutton .checkmark:after {
+    top: 6px;
+    left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+//checkbox styling
+.custom-checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: $fs-14;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.custom-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+.custom-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: $theme-color;
+}
+.custom-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.custom-checkbox .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.my-profile-wrapper-right{
+    padding: 0;
+    .btn-theme{
+        padding: 8px 20px !important;
+    }
+}
+.my-profile-wrapper-right{
+    .nav-tabs{
+        border-bottom: 3px solid $border-color;
+        li{
+            width: 33.33%;
+            text-align: center;
+            margin-bottom: -2px;
+            &.active{
+                a{
+                    color: $theme-color !important;
+                    border: 0px solid #ddd !important;
+                    background: $grey-bg !important;
+                }
+            }
+            a{
+                color: $black-color;
+                font-weight: 600;
+            }
+        }
+    }
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}

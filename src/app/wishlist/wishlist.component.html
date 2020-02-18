@@ -1,0 +1,76 @@
+<div class="inner-content-wrapper">
+  <div class="inner-content-title">
+    <h3 class="section-title">Wishlist</h3>
+  </div>
+  <div class="content homecomponent">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered shop-cart-table">
+            <thead>
+              <tr>
+                <th style="width:50%">Product</th>
+                <th>Price</th>
+                <th>Stock Status</th>
+                <th style="width:10%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a (click)="viewProductDetails(1)">
+                    <img src="https://placehold.it/80x80" alt="">
+                    <b>Manischewitz Concord</b>
+                  </a>
+                </td>
+                <td>$26.99</td>
+                <td>In Stock</td>
+                <td>
+                  <a class="icons" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-trash-alt"></i></a>
+                  <a class="icons" (click)="shopNow()" data-toggle="tooltip" title="Shop Now"><i class="fas fa-shopping-bag"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a (click)="viewProductDetails(1)">
+                    <img src="https://placehold.it/80x80" alt="">
+                    <b>Manischewitz Concord</b>
+                  </a>
+                </td>
+                <td>$26.99</td>
+                <td>Out of Stock</td>
+                <td>
+                  <a class="icons" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-trash-alt"></i></a>
+                  <a class="icons" (click)="shopNow()" data-toggle="tooltip" title="Shop Now"><i class="fas fa-shopping-bag"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a (click)="viewProductDetails(1)">
+                    <img src="https://placehold.it/80x80" alt="">
+                    <b>Manischewitz Concord</b>
+                  </a>
+                </td>
+                <td>$26.99</td>
+                <td>In Stock</td>
+                <td>
+                  <a class="icons" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-trash-alt"></i></a>
+                  <a class="icons" (click)="shopNow()" data-toggle="tooltip" title="Shop Now"><i class="fas fa-shopping-bag"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                    <button class="btn btn-theme">Clear Wishlist</button>
+                </td>
+                <td></td>
+                <td>
+                    <a class="btn btn-theme" routerLink="/shop">Continue Shopping</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

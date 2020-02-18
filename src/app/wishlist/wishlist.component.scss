@@ -1,0 +1,20 @@
+.shop-cart-table{
+    tbody{
+        td{
+            vertical-align: middle;
+        }
+    }
+
+    b{
+        display: inline-block;
+        margin-left: 15px;
+    }
+    .gt{
+        text-align: right;
+        display: block;
+    }
+}
+.proceed-checkout{
+    text-align: center;
+    margin-top: 50px;
+}

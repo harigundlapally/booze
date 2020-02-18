@@ -1,0 +1,134 @@
+<div class="my-details">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#prof">My Profile</a></li>
+        <li><a data-toggle="tab" href="#phone">Phone Number</a></li>
+        <li><a data-toggle="tab" href="#email">Email</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <div id="prof" class="tab-pane fade in active">
+          <div class="profile-data">
+            
+
+              <div class="profile-pic text-center">
+                  <form enctype="multipart/form-data" name="form">
+                    <span class="profile-wrapper">
+                        <img src="/assets/images/hari_pic.jpg" alt="" class="img-circle img-responsive profile-picture-120">
+                        <span class="edit-profile">
+                            <input id="profile-pic-upload" class="hidden ng-isolate-scope ng-pristine ng-invalid ng-invalid-required" type="file" ng-model="file" name="file" base-sixty-four-input="" required="" onload="onLoadProfilePic" maxsize="1000" accept="image/png,image/PNG,image/jpg,image/JPG,image/jpeg,image/JPEG">
+                            <label for="profile-pic-upload" style="position: relative;top: 45px;cursor:pointer;font-size: 12px;color: #fff;">Change Photo</label>
+                        </span>
+                    </span>
+                    <div class="red-color text-center ng-hide" ng-show="form.file.$error.maxsize">Files must not exceed 1 MB</div>
+                    <br>
+                </form>
+                </div>
+
+
+              <form action="" name="userProfileForm">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>First Name:</label>
+                        <input type="text" id="fname-val" class="form-control ng-pristine ng-valid ng-valid-required" name="fname">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Last Name:</label>
+                        <input type="text" id="lname-val" class="form-control ng-pristine ng-valid ng-valid-required" name="lname">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="lname">Date of birth:</label>
+                        <div class="input-group date" id="datetimepicker1">
+                          <input type="text" class="form-control dob ng-pristine ng-valid" placeholder="DD-MM-YYYY">
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="lname">Gender:</label>
+                        <br>
+                        <label class="custom-radiobutton">Male
+                          <input type="radio" name="radio" value="MALE">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-radiobutton">Female
+                          <input type="radio" name="radio" value="FEMALE">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-radiobutton">Others
+                          <input type="radio" name="radio" value="OTHER">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn-theme-dark btn">Submit</button>
+                    <br>
+                  </div>
+                </form>
+
+
+
+
+
+
+
+          </div>
+        </div>
+        <div id="phone" class="tab-pane fade">
+          
+
+            <form action="" name="userProfileMobileForm">
+                <br>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="phone-number">Phone Number:</label>
+                    <div class="input-group profile-group">
+                       <span class="input-group-addon"><i class="fas fa-mobile-alt"></i></span>
+                       <input type="text" class="form-control ng-pristine ng-valid ng-valid-pattern" id="phone-number" name="mobileNumber">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="center-block">&nbsp;</label>
+                    <button type="button" class="btn-theme-dark btn">Submit</button>
+                  </div>
+                </div>
+          
+                <br>
+              </form>
+
+
+
+        </div>
+        <div id="email" class="tab-pane fade">
+            <form action="" name="userProfileEmailForm">
+                <br>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="email-change">Email Address:</label>
+                    <div class="input-group profile-group">
+                       <span class="input-group-addon"><i class="far fa-envelope"></i></span>
+                       <input type="email" class="form-control ng-pristine ng-valid ng-valid-email" id="email-change">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="center-block">&nbsp;</label>
+                      <button type="button" class="btn-theme-dark btn">Submit</button>
+                  </div>
+                </div>
+          
+                <br>
+              </form>
+        </div>
+      </div>
+</div>

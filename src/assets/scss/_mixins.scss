@@ -1,0 +1,51 @@
+/********** transform-translate ************/
+@mixin translate($x,$y){
+    transform: translate($x,$y);
+    -webkit-transform: translate($x,$y);
+    -ms-transform: translate($x,$y);
+    -o-transform: translate($x,$y);
+    -moz-transform: translate($x,$y);
+}
+
+
+@mixin translateY($y){
+    transform: translateY($y);
+    -webkit-transform: translateY($y);
+    -ms-transform: translateY($y);
+    -o-transform: translateY($y);
+    -moz-transform: translateY($y);
+}
+
+/********** transform-rotate ************/
+@mixin rotate($x){
+    transform: rotate($x);
+    -webkit-transform: rotate($x);
+    -ms-transform: rotate($x);
+    -o-transform: rotate($x);
+    -moz-transform: rotate($x);
+}
+
+/********** transition ************/
+@mixin transition($all,$method,$time){
+    transition: $all $method $time;
+    -webkit-transition: $all $method $time;
+    -ms-transition: $all $method $time;
+    -o-transition: $all $method $time;
+    -moz-transition: $all $method $time;
+}
+/********** box-shadow *************/
+
+
+@mixin box-shadow($x, $y, $blur, $color) {
+    -ms-box-shadow:$x $y $blur $color;
+    -o-box-shadow:$x $y $blur $color;
+    -webkit-box-shadow:$x $y $blur $color;
+    -moz-box-shadow:$x $y $blur $color;
+    box-shadow:$x $y $blur $color;
+}
+
+@mixin responsive($min,$max) {
+    @media only screen and ( min-width : $min ) and ( max-width : $max ) {
+      @content;
+    }
+}

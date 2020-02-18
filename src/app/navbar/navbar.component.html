@@ -1,0 +1,65 @@
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" routerLink="home">BOOZE</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-menu">
+        <li><a routerLinkActive="active" routerLink="home">Home</a></li>
+        <li><a routerLinkActive="active" routerLink="shop">Products</a></li>
+        <li><a routerLinkActive="active" routerLink="contact">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="userIsAuthenticated">
+            <a routerLinkActive="active" routerLink="/profile/my-wishlist">
+                <i class="far fa-heart"></i>
+                <span class="wishlistCount">{{wishlistCount}}</span>
+            </a>
+            <div class="wishlist-container" *ngIf="service.cartActive">
+              <span class="arrow-up"></span>
+              <span class="device">
+                <img src="/assets/images/banner3.jpg" alt="device_name">
+              </span>
+              <span class="text">Added to Wishlist</span>
+              <span class="check">
+                  <i class="fas fa-check"></i>
+              </span>
+            </div>
+        </li>
+        <li *ngIf="userIsAuthenticated">
+            <a routerLinkActive="active" routerLink="cart">
+                <i class="fas fa-shopping-basket"></i>
+                <span class="wishlistCount">{{cartCount}}</span>
+            </a>
+            <!-- <div class="wishlist-container" style="display: block;">
+              <div class="arrow-up"></div>
+              <div class="device">
+                <img src="Assets/Image1.png" alt="device_name">
+              </div>
+              <div class="text">Added to Wishlist</div>
+              <div class="check"></div>
+            </div> -->
+        </li>
+        <li *ngIf="userIsAuthenticated">
+          <a routerLinkActive="active"  routerLink="profile">
+              <i class="far fa-user"></i>
+          </a>
+          <ul>
+            <li><a href="javascript:void(0)" routerLink="/profile/my-details">My Profile</a></li>
+            <li><a href="javascript:void(0)" routerLink="/profile/my-orders">My Orders</a></li>
+            <li><a href="javascript:void(0)" routerLink="/profile/my-wishlist">My Wishlist</a></li>
+            <li><a href="javascript:void(0)" routerLink="/profile/change-password">Change Password</a></li>
+            <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+        <li *ngIf="!userIsAuthenticated"><a routerLinkActive="active" routerLink="signup">Sign Up</a></li>
+        <li *ngIf="!userIsAuthenticated"><a routerLinkActive="active" routerLink="login">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
