@@ -1,23 +1,22 @@
 <div class="shopping-cart-left">
     <h4 class="header">My Addresses
-      <button type="button" class="btn btn-theme pull-right add-new-btn" data-toggle="modal" data-target="#address-modal">Add New Address</button>
+      <button type="button" class="btn btn-theme pull-right add-new-btn" (click)="showAddressForm()">Add New Address</button>
     </h4>
     <div class="address-items">
       <ul class="selected-cart">
         <div class="text-center secondary-color default-address margin-top-10"></div>
-        <li >
+        <li *ngFor="let address of allAddress;index as i">
           <div class="row">
             <div class="col-md-9 col-sm-9">
-              <h4 class="uppercase">Amol Gawande (
-                <span >9028425167</span>)</h4>
+              <h4 class="uppercase">{{address.name}} (<span >{{address.contactNumber}}</span>)</h4>
               <address>
-                <p class="uppercase">kapil towers, thrymr software, 5th floor. finanatal district, nnakramguda, hyd</p>
+                <p class="uppercase">{{address.address}}</p>
                 <p class="uppercase"></p>
-                <p class="uppercase">Hyderabad</p>
-                <p class="uppercase">Andhra Pradesh</p>
+                <p class="uppercase">{{address.city}}</p>
+                <p class="uppercase">{{states[address.state]}}</p>
                 <p>
-                  <span class="uppercase">India</span> -
-                  <span >500032</span>
+                  <span class="uppercase">{{address.country}}</span> -
+                  <span>{{address.pinCode}}</span>
                 </p>
               </address>
             </div>
@@ -25,44 +24,12 @@
               <div class="actions">
                 <div class="text-center">
                   <label class="radio-inline">
-                    <input type="radio" class="theme-color" name="adddress" checked="checked">Delivery Address</label>
+                    <input type="radio" class="theme-color" name="adddress" [checked]="address.defaultAddress" (change)="makeDefaultCheckoutAddress(address)">Delivery Address</label>
                   <br>
                   <br>
                   <div>
-                    <button type="button" name="button" class="btn btn-theme">Edit</button>
-                    <button type="button" name="button" class="btn btn-theme-dark">Delete</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="row">
-            <div class="col-md-9 col-sm-9">
-              <h4 class="uppercase">Amol (
-                <span >9028425167</span>)</h4>
-              <address>
-                <p class="uppercase">pooui mjjk</p>
-                <p class="uppercase">uyiyiy</p>
-                <p class="uppercase">Bhadrachalam</p>
-                <p class="uppercase">Andhra Pradesh</p>
-                <p>
-                  <span class="uppercase">India</span> -
-                  <span >500032</span>
-                </p>
-              </address>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <div class="actions">
-                <div class="text-center">
-                  <label class="radio-inline">
-                    <input type="radio" class="theme-color" name="adddress">Delivery Address</label>
-                  <br>
-                  <br>
-                  <div>
-                    <button type="button" name="button" class="btn btn-theme">Edit</button>
-                    <button type="button" name="button" class="btn btn-theme-dark">Delete</button>
+                    <button type="button" class="btn btn-theme" (click)="editAddress(address)">Edit</button>
+                    <button type="button" class="btn btn-theme-dark" (click)="deleteAddress(address)">Delete</button>
                   </div>
                 </div>
               </div>
@@ -79,7 +46,7 @@
 </div>      
 
 
-<div id="address-modal" class="modal fade ng-scope in">
+<div id="address-modal" class="modal fade">
     <div class="modal-dialog modal-lg">
   
       <!-- Modal content-->
@@ -88,17 +55,17 @@
           <button type="button" class="close" data-dismiss="modal">
             <i class="fa fa-times"></i>
           </button>
-          <h4 class="modal-title ng-binding">Add New Address</h4>
+          <h4 class="modal-title ng-binding">{{addressFormTitle}}</h4>
         </div>
         <div class="modal-body padding-top-0">
-          <form name="addressForm" id="address-form-in-cart" class="">
+          <form (submit)="onAddressSubmit()" #addressForm="ngForm">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="name">Name
                     <i class="fas fa-asterisk mandatory-field"></i>
                   </label>
-                  <input type="text" class="form-control " id="name" placeholder="Enter name" name="name" required="">
+                  <input type="text" class="form-control " id="name" placeholder="Enter name" [(ngModel)]="address.name" #nameInput="ngModel" required name="name">
                 </div>
               </div>
               <div class="col-md-6">
@@ -106,7 +73,7 @@
                   <label for="mob">Mobile No
                     <i class="fas fa-asterisk mandatory-field"></i>
                   </label>
-                  <input type="text" class="form-control" id="mob" placeholder="Enter mobile no." maxlength="10" name="contactNumber" required="">
+                  <input type="text" class="form-control" id="mob" placeholder="Enter mobile no." maxlength="10" name="contactNumber" [(ngModel)]="address.contactNumber" #contactInput="ngModel" required>
                 </div>
               </div>
             </div>
@@ -116,13 +83,13 @@
                   <label for="add">Address
                     <i class="fas fa-asterisk mandatory-field"></i>
                   </label>
-                  <textarea rows="4" class="form-control " placeholder="Enter address" name="address" required=""></textarea>
+                  <textarea rows="4" class="form-control " placeholder="Enter address" name="address" [(ngModel)]="address.address" #addressInput="ngModel" required></textarea>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="landmark">Land Mark</label>
-                  <input type="text" class="form-control ng-pristine ng-valid" id="landmark" placeholder="Enter Land Mark" name="landMark">
+                  <label for="landmark">Email</label>
+                  <input type="text" class="form-control" placeholder="Enter Email" name="email" [(ngModel)]="address.email" #emailInput="ngModel">
                 </div>
               </div>
             </div>
@@ -132,7 +99,10 @@
                   <label for="state">State
                     <i class="fas fa-asterisk mandatory-field"></i>
                   </label>
-                  <input type="text" class="form-control " id="state" placeholder="Enter state" name="state" required="">
+                  <select name="state" class="form-control" [(ngModel)]="address.state" #stateInput="ngModel" required>
+                    <option value="">Select State</option>
+                    <option *ngFor="let state of states; index as i" value="{{i}}">{{state}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-6">
@@ -140,7 +110,7 @@
                   <label for="city">City
                     <i class="fas fa-asterisk mandatory-field"></i>
                   </label>
-                  <input type="text" class="form-control " id="city" placeholder="Enter city" required="">
+                  <input type="text" class="form-control" placeholder="Enter city" [(ngModel)]="address.city" #cityInput="ngModel" required name="city">
                 </div>
               </div>
             </div>
@@ -148,7 +118,7 @@
               <div class="col-md-6">
                   <div class="form-group">
                     <label for="country">Country<i class="fas fa-asterisk mandatory-field"></i></label>
-                    <input type="text" class="form-control" id="country" placeholder="Enter Country" name="country" required readonly>
+                    <input type="text" class="form-control" placeholder="Enter Country" name="country" [(ngModel)]="address.country" #countryInput="ngModel">
                   </div>
                 </div>
               <div class="col-md-6">
@@ -156,7 +126,7 @@
                   <label for="pin">Pincode
                     <i class="fas fa-asterisk mandatory-field"></i>
                   </label>
-                  <input type="text" class="form-control" id="pin" placeholder="Enter pincode" maxlength="6" name="pinCode" pattern="/^[0-9]{6}$/" required="">
+                  <input type="text" class="form-control" id="pin" placeholder="Enter pincode" maxlength="6" name="pinCode" pattern="/^[0-9]{6}$/" [(ngModel)]="address.pinCode" #pincodeInput="ngModel" required>
                 </div>
               </div>
             </div>
@@ -168,7 +138,7 @@
             </div>
             <hr>
             <div class="text-center">
-              <button type="button" class="btn-theme btn margin-0">Submit</button> &nbsp;
+              <button type="submit" class="btn-theme btn margin-0">Submit</button> &nbsp;
               <button type="button" class="btn-theme-dark btn margin-0" data-dismiss="modal">Cancel</button>
             </div>
           </form>

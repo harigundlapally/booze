@@ -1,45 +1,42 @@
 <div class="inner-content-wrapper">
   <div class="inner-content-title">
-    <h3 class="section-title"><a href="#">Shop</a> / Rondel Rose Semi Seco</h3>
+    <h3 class="section-title"><a href="javascript:void(0)" (click)="shop()">Shop</a> / {{productData.name}}</h3>
   </div>
   <div class="product-details">
     <div class="container">
       <div class="row">
         <div class="col-md-5">
           <div class="product-image-wrapper">
-            <img src="/assets/images/product_image.jpg" alt="" class="img-responsive">
+            <img src="/assets/images/{{productData.image}}" alt="" class="img-responsive">
           </div>
         </div>
         <div class="col-md-7">
           <div class="product-desc">
-            <h4 class="title">Rondel Rose Semi Seco Cava</h4>
+            <h4 class="title">{{productData.name}}</h4>
             <div class="price">
               <h4>
-                <span class="old">$27.99</span>
-                <span class="new">$25.99</span>
+                <span class="old">${{productData.listPrice}}</span>
+                <span class="new">${{productData.salePrice}}</span>
               </h4>
             </div>
             <div class="product-short-headlines">
               <ul>
-                <li>Semi-Sweet</li>
-                <li>Strawberry</li>
-                <li>Red Fruit</li>
-                <li>Light Bodied</li>
+                <li *ngFor="let features of productData.special_features; index as i;">{{features.feature}}</li>
               </ul>
             </div>
             <div class="product-short-desc">
-              <p>Penedes, Spain- A fresh Rose with a touch of sweetness that is perfect for pairing with spicy dishes and desserts. Tiny bubbles filled with sweet red fruit glide across the palate into a smooth and refreshing finish.</p>
+              <p>{{productData.description}}</p>
             </div>
             <div class="product-quantity">
               <div class="row">
                 <div class="col-md-12">
                   <div class="row">
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                       <select name="" class="form-control">
                         <option value="1">750 ML</option>
                         <option value="1">1000 ML</option>
                       </select>
-                    </div>
+                    </div> -->
                     <div class="col-md-3">
                         <div class="input-group">
                             <span class="input-group-btn">
@@ -47,7 +44,7 @@
                                     <span class="glyphicon glyphicon-minus"></span>
                                 </button>
                             </span>
-                            <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10" readonly>
+                            <input type="text" name="quant[1]" class="form-control input-number productQuantity" value="1" min="1" max="10">
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
                                     <span class="glyphicon glyphicon-plus"></span>
@@ -56,7 +53,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                      <button class="btn btn-theme">Add To Cart</button>
+                      <button class="btn btn-theme-dark" (click)="addToCart(productData._id)" type="button">Add To Cart</button>
                     </div>
                   </div>
                 </div>
@@ -68,7 +65,7 @@
                   <b>SKU:</b> 3888897-1
                 </li>
                 <li>
-                  <b>CATEGORY:</b> A/C
+                  <b>CATEGORY:</b> {{productData.categoryId}}
                 </li>
                 <li>
                   <b>TAG:</b> Canned Wine / Fruit Wine
@@ -89,12 +86,10 @@
           
           <div class="tab-content">
             <div id="desc" class="tab-pane fade in active">
-              <p>Pulvinar taciti eu dis purus litora vulputate elementum rutrum blandit morbi nisi nunc a eros suspendisse suscipit laoreet ipsum suspendisse a commodo parturient ultrices. A praesent a at dictumst a himenaeos dis a parturient tincidunt consectetur felis feugiat condimentum. Est lorem luctus donec nostra torquent nullam nascetur a pretium est lacus dignissim volutpat scelerisque dictumst diam tincidunt cum ante habitant tristique suspendisse nisi sodales.</p>
+              <p>{{productData.description}}</p>
             </div>
             <div id="add-info" class="tab-pane fade">
-              <p>A hac a a dictumst venenatis a interdum ac placerat habitasse id libero scelerisque a. Parturient ullamcorper nec feugiat class vitae tristique scelerisque consectetur a viverra imperdiet a curabitur vel senectus a ullamcorper nec metus eget eu dis commodo tempor ornare. Lacus suscipit hendrerit condimentum egestas amet ad mi consequat vestibulum molestie hendrerit praesent ut ut parturient eu ac vestibulum sem velit a nullam amet.</p>
-              <p>Ut a quis hac ac ipsum a quisque ad dui parturient quam mus ut vestibulum adipiscing tincidunt hendrerit parturient a dui eleifend neque. A vestibulum magnis proin lectus duis ullamcorper scelerisque amet magnis sodales per per leo aptent adipiscing pharetra ante a. Et ullamcorper aliquam cursus sociosqu condimentum placerat lacus sem conubia in a pulvinar tempor eu netus fames ad aliquet aptent. Augue a vulputate scelerisque cubilia a ullamcorper id parturient tincidunt enim vestibulum adipiscing a cubilia vestibulum egestas mauris placerat tortor cursus ultrices luctus libero rutrum adipiscing. Suspendisse cursus scelerisque a mus vestibulum cubilia massa nullam magna ac a vitae volutpat consectetur parturient odio ullamcorper quam diam morbi eu parturient quam praesent a a.</p>
-              <p>A hac a a dictumst venenatis a interdum ac placerat habitasse id libero scelerisque a. Parturient ullamcorper nec feugiat class vitae tristique scelerisque consectetur a viverra imperdiet a curabitur vel senectus a ullamcorper nec metus eget eu dis commodo tempor ornare. Lacus suscipit hendrerit condimentum egestas amet ad mi consequat vestibulum molestie hendrerit praesent ut ut parturient eu ac vestibulum sem velit a nullam amet.</p>
+              <p>{{productData.additional_information}}</p>
             </div>
             <div id="cust-reviews" class="tab-pane fade">
               <h3>Overall Ratings</h3>

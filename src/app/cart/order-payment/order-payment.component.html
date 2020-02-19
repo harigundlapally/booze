@@ -2,41 +2,14 @@
     <h4 class="header">Payment Options</h4>
     <div class="payment-items">
         <div class="payment-options-wrapper">
-            <div class="radio disabled">
-              <label>Saved Cards
-                <input type="radio" name="optradio" disabled>
+            <div class="radio" *ngFor="let paymentType of paymentTypes;i as index">
+              <label>{{paymentType.displayName}}
+                <input type="radio" name="payment" (change)="getPaymentType($event)" value="{{paymentType.value}}">
               </label>
             </div>
-            <div class="radio">
-              <label>Paytm
-                <input type="radio" name="optradio1" value="PAYTM" ng-model="orderData.paymentType" class="ng-pristine ng-valid">
-              </label>
-            </div>
-            <div class="radio disabled">
-              <label>Oxygen Wallet
-                <input type="radio" name="optradio" disabled>
-              </label>
-            </div>
-            <div class="radio disabled">
-              <label>Credit / Debit Card
-                <input type="radio" name="optradio" disabled>
-              </label>
-            </div>
-            <div class="radio disabled">
-              <label>Net Banking
-                <input type="radio" name="optradio" disabled>
-              </label>
-            </div>
-            <div class="radio">
-              <label>Cash On Delivery
-                <input type="radio" name="optradio1" value="COD" ng-model="orderData.paymentType" class="ng-pristine ng-valid">
-              </label>
-            </div>
-            <div class="radio">
-              <label>PayU
-                <input type="radio" name="optradio1" value="PAYU" ng-model="orderData.paymentType" class="ng-pristine ng-valid">
-              </label>
-            </div>
+          </div>
+          <div *ngIf="paypal">
+            <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
           </div>
           <div class="text-center marginBottom-10">
               <a routerLink="/cart/shipping-address" class="btn btn-theme-dark"><i class="fa fa-chevron-left"></i> Back To Address</a>

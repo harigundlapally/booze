@@ -8,46 +8,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let wishlist of allWishlists;i as index;">
         <td>
-          <a (click)="viewProductDetails(1)">
-            <img src="https://placehold.it/80x80" alt="">
-            <b>Manischewitz Concord</b>
-          </a>
+          <a (click)="viewProductDetails(wishlist.productId)" class="image-link">
+              <span class="image-wrapper">
+                <img src="/assets/images/{{wishlist.image}}" alt="">
+              </span>
+              <b>{{wishlist.name}}</b>
+            </a>
         </td>
-        <td>$26.99</td>
+        <td>${{wishlist.listPrice}}</td>
         <td>In Stock</td>
         <td>
-          <a class="icons" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-trash-alt"></i></a>
-          <a class="icons" (click)="shopNow()" data-toggle="tooltip" title="Shop Now"><i class="fas fa-shopping-bag"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a (click)="viewProductDetails(1)">
-            <img src="https://placehold.it/80x80" alt="">
-            <b>Manischewitz Concord</b>
-          </a>
-        </td>
-        <td>$26.99</td>
-        <td>Out of Stock</td>
-        <td>
-          <a class="icons" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-trash-alt"></i></a>
-          <a class="icons" (click)="shopNow()" data-toggle="tooltip" title="Shop Now"><i class="fas fa-shopping-bag"></i></a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a (click)="viewProductDetails(1)">
-            <img src="https://placehold.it/80x80" alt="">
-            <b>Manischewitz Concord</b>
-          </a>
-        </td>
-        <td>$26.99</td>
-        <td>In Stock</td>
-        <td>
-          <a class="icons" (click)="removeFromWishlist()" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-trash-alt"></i></a>
-          <a class="icons" (click)="shopNow()" data-toggle="tooltip" title="Shop Now"><i class="fas fa-shopping-bag"></i></a>
+          <a class="icons" (click)="removeFromWishlist(wishlist.productId)" data-toggle="tooltip" title="Remove From Wishlist"><i class="far fa-trash-alt"></i></a>
+          <a class="icons" (click)="shopNow(wishlist.productId)" data-toggle="tooltip" title="Shop Now"><i class="fas fa-shopping-bag"></i></a>
         </td>
       </tr>
       <tr>

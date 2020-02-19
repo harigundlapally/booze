@@ -1,43 +1,35 @@
 <div class="inner-content-wrapper">
-  <!-- <div class="inner-content-title">
-    <h3 class="section-title">Signup</h3>
-  </div> -->
   <div class="content login-wrapper">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <form action="">
-            <div class="row">
-                <h3 class="text-center  header-text">Signup</h3>
+        <div class="col-md-8 col-md-offset-2">
+          <form (submit)="onSignup(signupForm)" #signupForm="ngForm" >
+            <div class="row login-container">
+              <h3 class="text-center header-text">Signup</h3>
+              <p class="text-center marginBottom-25">Please Register using account detail below.</p>
               <div class="col-md-6">
                   <div class="form-group">
                     <label for="">First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name">
+                    <input type="text" class="form-control" placeholder="First Name" ngModel #firstNameInput="ngModel" required name="firstName">
                   </div>
               </div>
               <div class="col-md-6">
                   <div class="form-group">
                       <label for="">Last Name</label>
-                      <input type="text" class="form-control" placeholder="Last Name">
+                      <input type="text" class="form-control" placeholder="Last Name" ngModel #lastNameInput="ngModel" required name="lastName">
                     </div>
               </div>
               <div class="col-md-12">
                   <div class="form-group">
-                    <label for="">User Name</label>
-                    <input type="text" class="form-control" placeholder="User Name">
-                  </div>
-              </div>
-              <div class="col-md-12">
-                  <div class="form-group">
                     <label for="">Email Address</label>
-                    <input type="email" class="form-control" placeholder="Email Address">
+                    <input type="email" class="form-control" placeholder="Email Address" ngModel #emailInput="ngModel" required name="email">
                   </div>
               </div>
               <div class="col-md-12">
                   <div class="form-group">
                     <label for="">Gender</label>
-                    <select class="form-control" name="gender">
-                      <option value="null">Select Gender</option>
+                    <select class="form-control" ngModel #genderInput="ngModel" required name="gender">
+                      <option value="">Select Gender</option>
                       <option value="1">Male</option>
                       <option value="2">Female</option>
                       <option value="3">Others</option>
@@ -47,17 +39,18 @@
               <div class="col-md-12">
                   <div class="form-group">
                     <label for="">Password</label>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" ngModel #passwordInput="ngModel" required name="password">
                   </div>
               </div>
               <div class="col-md-12">
                   <div class="form-group">
                     <label for="">Confirm Password</label>
-                    <input type="password" class="form-control" placeholder="Confirm Password">
+                    <input type="password" class="form-control" placeholder="Confirm Password" ngModel #cPasswordInput="ngModel" required name="confirmPassword">
                   </div>
               </div>
               <div class="col-md-12 text-center">
-                <button type="button" class="btn btn-theme">Register</button>
+                <button type="submit" class="btn btn-theme-dark marginBottom-15">Register</button>
+                <p>Already have an account? <a href="javascript:void(0)" routerLink="/login" class="theme-color">Login</a></p>
               </div>
             </div>
             

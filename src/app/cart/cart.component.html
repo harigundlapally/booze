@@ -6,7 +6,7 @@
                     <div class="breadcrum">
                         <ul>
                             <li>
-                                <a routerLink="/home">Home</a>
+                                <a routerLink="/">Home</a>
                             </li>
                             <li> > </li>
                             <li>
@@ -53,11 +53,11 @@
                         <h4>Selected Delivery Type</h4>
                         <div>
                             <label class="custom-radiobutton">Standard Delivery
-                                <input type="radio" name="radio" value="STANDARD">
+                                <input type="radio" name="radio" value="STANDARD" checked>
                                 <span class="checkmark"></span>
                             </label>
                             <label class="custom-radiobutton">Express Delivery
-                                <input type="radio" name="radio" value="EXPRESS" checked>
+                                <input type="radio" name="radio" value="EXPRESS">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -67,26 +67,22 @@
                         <table class="table table-bordered">
                             <tbody><tr>
                             <td>Sub Total</td>
-                            <td class="ng-binding">₹ 50</td>
+                            <td class="ng-binding">$ {{subtotalAmount}}</td>
                             </tr>
                             <tr>
                             <td>Delivery Charges</td>
-                            <td>&#8377; 40</td>
-                            </tr>
-                            <tr>
-                            <td>Discount / Gift Coupon</td>
-                            <td>&#8377; 20</td>
+                            <td>$ {{deliveryChargesAmount}}</td>
                             </tr>
                             <tr>
                             <td class="ng-binding">
                                 <b>Total Price</b> ( 1 <span>Item</span> )
                             </td>
-                            <td class="secondary-color ng-binding">₹ 70</td>
+                            <td class="secondary-color ng-binding">$ {{totalAmount}}</td>
                             </tr>
                         </tbody></table>
                         </div>
                         <div>
-                        <a class="btn-theme-dark btn" >Proceed To Pay</a>
+                        <a class="btn-theme-dark btn" href="javascript:void(0)" (click)="proceedToPay()">Proceed To Pay</a>
                         </div>
                     </div>
                 </div>

@@ -32,15 +32,16 @@ router.get('',(req,res,next) => {
 
 //get by category
 router.get('/browse',(req,res,next) => {
+    const userId = '5e3940e2084e2a36201be509';
     let isLoggedIn = req.query.isLoggedIn;
-        let productQuery;
-        const query = (req.query.category && req.query.category != 'all') ? {categoryId : req.query.category} : (req.query.category == 'all' && req.query.category == undefined) ? {} : {};
-        const sort = (req.query.sort) == 'low_to_high' ? { salePrice : 1 } :  (req.query.sort) == 'high_to_low' ? { salePrice : -1 } : (req.query.sort) == 'default' ? { salePrice : -1 } : {};
-        if(query != {}){
-            productQuery = Product.find(query);
-        }else if(sort != {}){
-            productQuery = Product.find(query).sort(sort);
-        }
+    let productQuery;
+    const query = (req.query.category && req.query.category != 'all') ? {categoryId : req.query.category} : (req.query.category == 'all' && req.query.category == undefined) ? {} : {};
+    const sort = (req.query.sort) == 'low_to_high' ? { salePrice : 1 } :  (req.query.sort) == 'high_to_low' ? { salePrice : -1 } : (req.query.sort) == 'default' ? { salePrice : -1 } : {};
+    if(query != {}){
+        productQuery = Product.find(query);
+    }else if(sort != {}){
+        productQuery = Product.find(query).sort(sort);
+    }
     let fetchedProducts;
     if(isLoggedIn === 'false' || isLoggedIn === undefined || isLoggedIn === ''){
         productQuery.then(documents => {
@@ -60,7 +61,7 @@ router.get('/browse',(req,res,next) => {
     }else{
         (async () => {
             let allWishlists = await Wishlist.find({
-                userId : '5e393374cd06c42c908f4f11'
+                userId : userId
             }).then((wishlists) => {
                 return wishlists;
             });
@@ -102,7 +103,6 @@ router.get('/browse',(req,res,next) => {
 router.get('/browseByPrice',(req,res,next) => {
     const query = (req.query.price && req.query.price != '') ? {listPrice: {$lte: req.query.price}} : '';
     const productQuery = Product.find(query);
-    const user = req.userData
     let fetchedProducts;
 
     productQuery.then(documents => {

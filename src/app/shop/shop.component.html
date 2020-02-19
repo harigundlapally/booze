@@ -23,35 +23,35 @@
             <!--Price-->
             <div class="slidecontainer">
               <h3>Price</h3>
-              <input type="range" min="1" class="slider" id="myRange" [attr.max]="myMaxPrice" (change)="getCategoryRange($event)">
-              <p>Price -> $0 - ${{maxPrice}}</p>
+              <input type="range" min="1" class="slider" id="myRange" [attr.max]="maxPrice" [attr.min]="minPrice" (change)="getCategoryRange($event)">
+              <p>Price -> ${{myMinPrice}} - ${{myMaxPrice}}</p>
             </div>
             <!--top products-->
             <div class="top-products">
               <h3>Top Products</h3>
               <div class="row top-products-wrapper">
-                <div class="col-md-4">
+                <div class="col-md-4 paddingLeft-0">
                   <span class="top-products-image"><img src="/assets/images/tp1.jpg" alt=""></span>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 paddingLeft-0">
                   <h5>Manischewitz Concord</h5>
                   <h6>$26.66</h6>
                 </div>
               </div>
               <div class="row top-products-wrapper">
-                <div class="col-md-4">
+                <div class="col-md-4 paddingLeft-0">
                   <span class="top-products-image"><img src="/assets/images/tp1.jpg" alt=""></span>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 paddingLeft-0">
                   <h5>Manischewitz Concord</h5>
                   <h6>$26.66</h6>
                 </div>
               </div>
               <div class="row top-products-wrapper">
-                <div class="col-md-4">
+                <div class="col-md-4 paddingLeft-0">
                   <span class="top-products-image"><img src="/assets/images/tp1.jpg" alt=""></span>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 paddingLeft-0">
                   <h5>Manischewitz Concord</h5>
                   <h6>$26.66</h6>
                 </div>
@@ -61,12 +61,7 @@
             <div class="categories-filter">
               <h3>Categories</h3>
               <ul>
-                <li><a href="#">All <span class="product-count">(78)</span></a></li>
-                <li><a href="#">Red White <span class="product-count">(30)</span></a></li>
-                <li><a href="#">Sparking Wine <span class="product-count">(20)</span></a></li>
-                <li><a href="#">White Wine<span class="product-count">(8)</span></a></li>
-                <li><a href="#">Rose & Blush Wine<span class="product-count">(10)</span></a></li>
-                <li><a href="#">Sake & Plurn Wine<span class="product-count">(10)</span></a></li>
+                <li *ngFor="let cat of allCategories;index as i;"><a href="javascript:void(0)" (click)="getSelectedCategoriesProducts(cat.categoryId)">{{cat.categoryName}} <span class="product-count">({{cat.count}})</span></a></li>
               </ul>
             </div>
           </div>
@@ -76,17 +71,16 @@
             <div class="all-categories-products-filters">
               <div class="row">
                 <div class="col-md-8">
-                  <p>We found <span class="theme-color">25</span> products available for you.</p>
+                  <p>We found <span class="theme-color">{{totalProductsCount}}</span> products available for you.</p>
                 </div>
                 <div class="col-md-4 text-right">
                   <form class="form-inline" action="#">
                     <div class="form-group">
                       <label for="sort">Sort By: &nbsp;</label>
-                      <select name="" class="form-control">
+                      <select name="product" class="form-control" (change)="sortProduct($event)">
                         <option value="default">Default</option>
-                        <option value="default">Latest</option>
-                        <option value="default">High To Low</option>
-                        <option value="default">Low To High</option>
+                        <option value="high_to_low">High To Low</option>
+                        <option value="low_to_high">Low To High</option>
                       </select>
                     </div>
                   </form>  
@@ -95,150 +89,28 @@
             </div>
             <div class="all-categories-products-wrapper">
               <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-4" *ngFor="let product of allProducts; index as i;">
                     <div class="product-wrapper">
-                      <a href="#"><img src="/assets/images/bs1.jpg" alt=""></a>
-                      <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                      <h5 class="quantity">750 ml</h5>
-                      <h4 class="price">
-                        <span class="old">$27.99</span>
-                        <span class="new">$25.99</span>
-                      </h4>
-                      <div class="product-options">
-                        <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                        <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                        <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="product-wrapper">
-                      <a href="#"><img src="/assets/images/bs10.jpg" alt=""></a>
-                      <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                      <h5 class="quantity">750 ml</h5>
-                      <h4 class="price">
-                        <span class="old">$27.99</span>
-                        <span class="new">$25.99</span>
-                      </h4>
-                      <div class="product-options">
-                        <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                        <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                        <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                      <div class="product-wrapper">
-                        <a href="#"><img src="/assets/images/bs3.jpg" alt=""></a>
-                        <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
+                      <img src="/assets/images/{{product.image}}" alt="">
+                      <!-- <a href="javascript:void(0)" (click)="viewProductDetails(product._id)"><img src="/assets/images/{{product.image}}" alt=""></a> -->
+                      <span class="wishlist-wrapper">
+                        <a href="javascrtipt:void(0)" (click)="add_removeFromWishlist(product.selected,product._id,allProducts,product)" data-toggle="tooltip" title="Add To Wishlist"><i class="fa-heart" [ngClass]="product?.selected === true ? 'fas' : 'far'"></i></a>
+                      </span>
+                      <div class="product-info-wrapper">
+                        <h4 class="title"><a href="#">{{product.name}}</a></h4>
                         <h5 class="quantity">750 ml</h5>
                         <h4 class="price">
-                          <span class="old">$27.99</span>
-                          <span class="new">$25.99</span>
+                          <span class="old">${{product.listPrice}}</span>
+                          <span class="new">${{product.salePrice}}</span>
                         </h4>
                         <div class="product-options">
-                          <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                          <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                          <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
+                          <a href="javascrtipt:void(0)" (click)="viewProductDetails(product._id)" data-toggle="tooltip" title="View Details">View Details</a>
+                          <a href="javascrtipt:void(0)" (click)="addToCart(product._id)" data-toggle="tooltip" title="Add To Cart">Add To Cart</a>
+                          <!-- <a href="javascrtipt:void(0)" (click)="deleteFromWishlist(product._id)" data-toggle="tooltip" title="Delete From Cart">delete</a> -->
                         </div>
-                      </div>
+                      </div>  
                     </div>
-                    <div class="col-md-4">
-                        <div class="product-wrapper">
-                          <a href="#"><img src="/assets/images/bs4.jpg" alt=""></a>
-                          <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                          <h5 class="quantity">750 ml</h5>
-                          <h4 class="price">
-                            <span class="old">$27.99</span>
-                            <span class="new">$25.99</span>
-                          </h4>
-                          <div class="product-options">
-                            <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                            <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="product-wrapper">
-                            <a href="#"><img src="/assets/images/bs5.jpg" alt=""></a>
-                            <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                            <h5 class="quantity">750 ml</h5>
-                            <h4 class="price">
-                              <span class="old">$27.99</span>
-                              <span class="new">$25.99</span>
-                            </h4>
-                            <div class="product-options">
-                              <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                              <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                              <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-wrapper">
-                              <a href="#"><img src="/assets/images/bs6.jpg" alt=""></a>
-                              <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                              <h5 class="quantity">750 ml</h5>
-                              <h4 class="price">
-                                <span class="old">$27.99</span>
-                                <span class="new">$25.99</span>
-                              </h4>
-                              <div class="product-options">
-                                <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                              <div class="product-wrapper">
-                                <a href="#"><img src="/assets/images/bs7.jpg" alt=""></a>
-                                <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                                <h5 class="quantity">750 ml</h5>
-                                <h4 class="price">
-                                  <span class="old">$27.99</span>
-                                  <span class="new">$25.99</span>
-                                </h4>
-                                <div class="product-options">
-                                  <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                                  <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                                  <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="product-wrapper">
-                                  <a href="#"><img src="/assets/images/bs8.jpg" alt=""></a>
-                                  <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                                  <h5 class="quantity">750 ml</h5>
-                                  <h4 class="price">
-                                    <span class="old">$27.99</span>
-                                    <span class="new">$25.99</span>
-                                  </h4>
-                                  <div class="product-options">
-                                    <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                                    <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                                    <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="product-wrapper">
-                                    <a href="#"><img src="/assets/images/bs9.jpg" alt=""></a>
-                                    <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                                    <h5 class="quantity">750 ml</h5>
-                                    <h4 class="price">
-                                      <span class="old">$27.99</span>
-                                      <span class="new">$25.99</span>
-                                    </h4>
-                                    <div class="product-options">
-                                      <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                                      <a href="#" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                                      <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                                    </div>
-                                  </div>
-                                </div>
+                  </div>
               </div>
             </div>
           </div>

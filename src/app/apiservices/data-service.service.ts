@@ -17,6 +17,7 @@ export class DataService {
   cartInfo: any;
   wishlists : any;
   nextRoute : string;
+  public :boolean = false;
   private tokenTimer:any;
   private token: string;
   private authStatusListner = new Subject<boolean>();
@@ -142,6 +143,7 @@ export class DataService {
           if(this.router.url == '/cart/shopping-cart' || this.router.url == '/home' || this.router.url == '/shop' || this.router.url == ''){
             this.getWishlistData();
           }
+          
         }else{
           this.cartStatusListner.next(0);
         }
@@ -149,6 +151,7 @@ export class DataService {
         if(err){
           console.log(err);
         }
+        
       });
     }
   }
@@ -163,6 +166,7 @@ export class DataService {
           this.wishlistDataStatusListner.next(response['result']);
           this.wishlists = response;
           this.getSyncWishlists();
+          
           return response;
         }else{
           this.wishlistStatusListner.next(0);
@@ -171,6 +175,7 @@ export class DataService {
         if(err){
           console.log(err);
         }
+        
       });
     }
   }
@@ -184,6 +189,7 @@ export class DataService {
       if(err){
         console.log(err);
       }
+      
     });
   }
 
@@ -195,10 +201,12 @@ export class DataService {
       }else{
         this.cartStatusListner.next(0);
       }
+      
     },(err) => {
       if(err){
         console.log(err);
       }
+      
     });
   }
 
@@ -235,6 +243,7 @@ export class DataService {
       if(err){
         console.log(err);
       }
+      
     });
   }
 
@@ -286,6 +295,7 @@ export class DataService {
 
   //Get request
   get_service(url) {
+    
     let httpHeaders = new HttpHeaders().set('Authorization',this.getAuthToken()).set('Content-Type', 'application/json');
     return this.httpClient.get(this.baseUrl + url,{
       headers: httpHeaders
@@ -295,6 +305,7 @@ export class DataService {
 
   //Post request
   post_service(url, data) {
+    
     let httpHeaders = new HttpHeaders().set('Authorization',this.getAuthToken()).set('Content-Type', 'application/json');
     return this.httpClient.post(this.baseUrl + url, JSON.stringify(data), {
       headers: httpHeaders
@@ -304,6 +315,7 @@ export class DataService {
 
   //Put request
   put_service(url, data) {
+    
     let httpHeaders = new HttpHeaders().set('Authorization',this.getAuthToken()).set('Content-Type', 'application/json');
     return this.httpClient.put(this.baseUrl + url,JSON.stringify(data), {
       headers: httpHeaders

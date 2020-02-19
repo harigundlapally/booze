@@ -12,32 +12,17 @@
           
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-              <div class="item active">
-                <img src="/assets/images/banner3.jpg" alt="Chania" class="img-responsive">
+              <div class="item" *ngFor="let product of bannerProducts;let k = index;" [ngClass]="k == 0 ? 'item active' : 'item'">
+                <img src="/assets/images/{{product.image}}" alt="Chania" class="img-responsive">
                 <div class="carousel-caption">
-                  <h5>Califonia | White wine</h5>
-                  <h3>Duplin</h3>
-                  <p>Sagittis ultricies dignissim parturient consectetur sed posuere nascetur magna a libero consequat hac adipiscing aenean.</p>
+                  <h5>
+                    <span *ngFor="let features of product.special_features;j as featureIndex ">{{features.feature}} - </span>
+                  </h5>
+                  <h3>{{product.name}}</h3>
+                  <p>{{product.description}}</p>
                 </div>
               </div>
-          
-              <div class="item">
-                <img src="/assets/images/banner1.jpg" alt="Chania" class="img-responsive">
-                <div class="carousel-caption">
-                  <h5>Califonia | White wine</h5>
-                  <h3>Mathie & Claudine</h3>
-                  <p>Neque parturient ad adipiscing euismod arcu mi proin lorem commodo praesent gravida ipsum posuere a.</p>
-                </div>
-              </div>
-          
-              <div class="item">
-                <img src="/assets/images/banner3.jpg" alt="Chania" class="img-responsive">
-                <div class="carousel-caption">
-                  <h5>Califonia | White wine</h5>
-                  <h3>Prosecco</h3>
-                  <p>Vestibulum scelerisque a elementum velit lobortis sem consectetur congue convallis dolor parturient cursus parturient consectetur potenti inceptos viverra a aptent ipsum sem a inceptos suscipit dapibus elementum.</p>
-                </div>
-              </div>
+             
             </div>
           
             <!-- Left and right controls -->
@@ -119,70 +104,27 @@
           <div class="col-md-6">
             <h4 class="section-title best-seller-title">Best Seller</h4>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6" *ngFor="let product of bestSellerProducts; index as b;">
                 <div class="product-wrapper">
-                  <a href="#"><img src="/assets/images/bs1.jpg" alt=""></a>
-                  <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                  <h5 class="quantity">750 ml</h5>
-                  <h4 class="price">
-                    <span class="old">$27.99</span>
-                    <span class="new">$25.99</span>
-                  </h4>
-                  <div class="product-options">
-                    <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                    <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                    <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="product-wrapper">
-                  <a href="#"><img src="/assets/images/bs2.jpg" alt=""></a>
-                  <h4 class="title"><a href="#">La Crema Pinot Noir</a></h4>
-                  <h5 class="quantity">375 ml</h5>
-                  <h4 class="price">
-                    <span class="old">$42.99</span>
-                    <span class="new">$40.25</span>
-                  </h4>
-                  <div class="product-options">
-                    <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                    <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                    <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                  <div class="product-wrapper">
-                    <a href="#"><img src="/assets/images/bs3.jpg" alt=""></a>
-                    <h4 class="title"><a href="#">Bele Gloss Pinot Noir</a></h4>
+                  <img src="/assets/images/{{product.image}}" alt="">
+                  <!-- <a href="javascript:void(0)" (click)="viewProductDetails(product._id)"><img src="/assets/images/{{product.image}}" alt=""></a> -->
+                  <span class="wishlist-wrapper">
+                    <a href="javascrtipt:void(0)" (click)="add_removeFromWishlist(product.selected,product._id,bestSellerProducts,product)" data-toggle="tooltip" title="Add To Wishlist"><i class="fa-heart"  [ngClass]="product?.selected === true ? 'fas' : 'far'"></i></a>
+                  </span>
+                  <div class="product-info-wrapper">
+                    <h4 class="title"><a href="#">{{product.name}}</a></h4>
                     <h5 class="quantity">750 ml</h5>
                     <h4 class="price">
-                      <span class="old">$32.99</span>
-                      <span class="new">$22.99</span>
+                      <span class="old">${{product.listPrice}}</span>
+                      <span class="new">${{product.salePrice}}</span>
                     </h4>
                     <div class="product-options">
-                      <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                      <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                      <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
+                      <a href="javascrtipt:void(0)" (click)="viewProductDetails(product._id)" data-toggle="tooltip" title="View Details">View Details</a>
+                      <a href="javascrtipt:void(0)" (click)="addToCart(product._id)" data-toggle="tooltip" title="Add To Cart">Add To Cart</a>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="product-wrapper">
-                    <a href="#"><img src="/assets/images/bs4.jpg" alt=""></a>
-                    <h4 class="title"><a href="#">Ferrari Carano Siena</a></h4>
-                    <h5 class="quantity">375 ml</h5>
-                    <h4 class="price">
-                      <span class="old">$54.99</span>
-                      <span class="new">$42.99</span>
-                    </h4>
-                    <div class="product-options">
-                      <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                      <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                      <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                    </div>
-                  </div>
-                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -193,70 +135,25 @@
             <div class="col-md-6">
               <h4 class="section-title most-popular-title">Most Popular</h4>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6" *ngFor="let productMP of mostPopularProducts; index as m;">
                   <div class="product-wrapper">
-                    <a href="#"><img src="/assets/images/mp1.jpg" alt=""></a>
-                    <h4 class="title"><a href="#">Marchese dell"Elsa</a></h4>
-                    <h5 class="quantity">750 ml</h5>
-                    <h4 class="price">
-                      <span class="old">$27.99</span>
-                      <span class="new">$25.99</span>
-                    </h4>
-                    <div class="product-options">
-                      <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                      <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                      <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="product-wrapper">
-                    <a href="#"><img src="/assets/images/mp2.jpg" alt=""></a>
-                    <h4 class="title"><a href="#">La Crema Pinot Noir</a></h4>
-                    <h5 class="quantity">375 ml</h5>
-                    <h4 class="price">
-                      <span class="old">$42.99</span>
-                      <span class="new">$40.25</span>
-                    </h4>
-                    <div class="product-options">
-                      <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                      <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                      <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="product-wrapper">
-                      <a href="#"><img src="/assets/images/mp3.jpg" alt=""></a>
-                      <h4 class="title"><a href="#">Bele Gloss Pinot Noir</a></h4>
+                    <img src="/assets/images/{{productMP.image}}" alt="">
+                    <!-- <a href="javascript:void(0)" (click)="viewProductDetails(productMP._id)"><img src="/assets/images/{{productMP.image}}" alt=""></a> -->
+                    <span class="wishlist-wrapper"><a href="javascrtipt:void(0)" (click)="add_removeFromWishlist(productMP.selected,productMP._id,mostPopularProducts,productMP)" data-toggle="tooltip" title="Add To Wishlist"><i class="fa-heart"  [ngClass]="productMP?.selected === true ? 'fas' : 'far'"></i></a></span>
+                    <div class="product-info-wrapper">
+                      <h4 class="title"><a href="#">{{productMP.name}}</a></h4>
                       <h5 class="quantity">750 ml</h5>
                       <h4 class="price">
-                        <span class="old">$32.99</span>
-                        <span class="new">$22.99</span>
+                        <span class="old">${{productMP.listPrice}}</span>
+                        <span class="new">${{productMP.salePrice}}</span>
                       </h4>
                       <div class="product-options">
-                        <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                        <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                        <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
+                        <a href="javascrtipt:void(0)" (click)="viewProductDetails(productMP._id)" data-toggle="tooltip" title="View Details">View Details</a>
+                        <a href="javascrtipt:void(0)" (click)="addToCart(productMP._id)" data-toggle="tooltip" title="Add To Cart">Add To Cart</a>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="product-wrapper">
-                      <a href="#"><img src="/assets/images/mp4.jpg" alt=""></a>
-                      <h4 class="title"><a href="#">Ferrari Carano Siena</a></h4>
-                      <h5 class="quantity">375 ml</h5>
-                      <h4 class="price">
-                        <span class="old">$54.99</span>
-                        <span class="new">$42.99</span>
-                      </h4>
-                      <div class="product-options">
-                        <a (click)="viewProductDetails(1)" data-toggle="tooltip" title="View Details"><i class="fas fa-info"></i></a>
-                        <a (click)="addToWishlist()" data-toggle="tooltip" title="Add To Wishlist"><i class="far fa-heart"></i></a>
-                        <a (click)="addToCart()" data-toggle="tooltip" title="Add To Cart"><i class="fas fa-shopping-basket"></i></a>
-                      </div>
-                    </div>
-                  </div>
+                </div>  
               </div>
             </div>
           </div>

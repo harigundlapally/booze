@@ -7,6 +7,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { SettingsComponent } from './settings/settings.component';
 import { MyWishlistComponent } from './my-wishlist/my-wishlist.component';
 import { MyDetailsComponent } from './my-details/my-details.component';
+import { FormsModule }   from '@angular/forms';
+
 
 const routes: Routes = [
   { path: '', component: ProfileComponent,
@@ -25,7 +27,8 @@ const routes: Routes = [
   declarations: [ProfileComponent,MyDetailsComponent, MyOrdersComponent, ChangePasswordComponent, SettingsComponent, MyWishlistComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
   ]
 })
 export class ProfileModule { }

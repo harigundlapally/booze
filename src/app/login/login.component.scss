@@ -13,19 +13,22 @@
     }
     form{
         @include box-shadow(0,2px,4px,rgba(70, 63, 95, 0.1));
-        padding: 0 15px 15px;
+        padding: 0 15px;
         .header-text{
-            background: $black-bg;
-            color: $white-color;
-            padding: 12px 15px;
+            background: transparent;
+            padding: 12px 0px;
             font-weight: 400;
             color: $theme-color;
             margin-top: 0;
             font-size: $fs-20;
-            margin-bottom: 30px;
+            margin-bottom: 0px;
         }
         .btn-theme{
             padding: 10px 20px !important
         }
+    }
+    .login-container{
+        padding: 30px;
+        background: $grey-bg;
     }
 }

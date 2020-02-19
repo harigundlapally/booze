@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MyAddressComponent } from './my-address/my-address.component';
 import { OrderPaymentComponent } from './order-payment/order-payment.component';
+import { FormsModule } from '@angular/forms';
+// import { NgxPayPalModule } from 'ngx-paypal';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   declarations: [CartComponent, ShoppingCartComponent, MyAddressComponent, OrderPaymentComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    // NgxPayPalModule,
     RouterModule.forChild(routes)
   ]
 })

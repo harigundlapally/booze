@@ -1,8 +1,8 @@
 <div class="my-details">
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#prof">My Profile</a></li>
-        <li><a data-toggle="tab" href="#phone">Phone Number</a></li>
-        <li><a data-toggle="tab" href="#email">Email</a></li>
+        <!-- <li><a data-toggle="tab" href="#phone">Phone Number</a></li> -->
+        <!-- <li><a data-toggle="tab" href="#email">Email</a></li> -->
       </ul>
       
       <div class="tab-content">
@@ -25,49 +25,37 @@
                 </div>
 
 
-              <form action="" name="userProfileForm">
+              <form  (submit)="onUpdateUser()">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>First Name:</label>
-                        <input type="text" id="fname-val" class="form-control ng-pristine ng-valid ng-valid-required" name="fname">
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" required #firstNameInput="ngModel">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Last Name:</label>
-                        <input type="text" id="lname-val" class="form-control ng-pristine ng-valid ng-valid-required" name="lname">
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" required #lastNameInput="ngModel">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="lname">Date of birth:</label>
-                        <div class="input-group date" id="datetimepicker1">
-                          <input type="text" class="form-control dob ng-pristine ng-valid" placeholder="DD-MM-YYYY">
-                          <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                          </span>
-                        </div>
+                        <label for="lname">Email:</label>
+                        <input type="text" class="form-control email" placeholder="Email address" name="email" [(ngModel)]="user.email" required readonly #emailInput="ngModel">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="lname">Gender:</label>
-                        <br>
-                        <label class="custom-radiobutton">Male
-                          <input type="radio" name="radio" value="MALE">
-                          <span class="checkmark"></span>
-                        </label>
-                        <label class="custom-radiobutton">Female
-                          <input type="radio" name="radio" value="FEMALE">
-                          <span class="checkmark"></span>
-                        </label>
-                        <label class="custom-radiobutton">Others
-                          <input type="radio" name="radio" value="OTHER">
-                          <span class="checkmark"></span>
-                        </label>
+                        <select name="gender" class="form-control" [(ngModel)]="user.gender" required #genderInput="ngModel">
+                          <option value="null">Select Gender</option>
+                          <option value="1">Male</option>
+                          <option value="2">Female</option>
+                          <option value="3">Others</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -95,7 +83,7 @@
                     <label for="phone-number">Phone Number:</label>
                     <div class="input-group profile-group">
                        <span class="input-group-addon"><i class="fas fa-mobile-alt"></i></span>
-                       <input type="text" class="form-control ng-pristine ng-valid ng-valid-pattern" id="phone-number" name="mobileNumber">
+                       <input type="text" class="form-control  ng-valid-pattern" id="phone-number" name="mobileNumber">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -118,7 +106,7 @@
                     <label for="email-change">Email Address:</label>
                     <div class="input-group profile-group">
                        <span class="input-group-addon"><i class="far fa-envelope"></i></span>
-                       <input type="email" class="form-control ng-pristine ng-valid ng-valid-email" id="email-change">
+                       <input type="email" class="form-control  ng-valid-email" id="email-change">
                     </div>
                   </div>
                   <div class="col-md-6">

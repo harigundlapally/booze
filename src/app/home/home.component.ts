@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit,OnDestroy {
       if(err){
         console.log(err);
       }
+      
     });
   }
 
@@ -63,6 +64,7 @@ export class HomeComponent implements OnInit,OnDestroy {
       if(err){
         console.log(err);
       }
+      
     });
   }
 
@@ -79,11 +81,11 @@ export class HomeComponent implements OnInit,OnDestroy {
         let currentItem = products.find((element) => { return element._id === product._id });
         currentItem.selected = !currentItem.selected;
         products[currentIndex] = {...currentItem};
-
       },(err) => {
         if(err){
           console.log(err);
         }
+        
       });
     }else{
         this.service.addToWishlist(data);
@@ -100,11 +102,12 @@ export class HomeComponent implements OnInit,OnDestroy {
       userId : localStorage.getItem('userId')
     }
     this.service.post_service(DataService.apisList.removeFromWishlist,data).subscribe(response => {
-      console.log(response);
+      
     },(err) => {
       if(err){
         console.log(err);
       }
+      
     });
   }
 
@@ -119,10 +122,12 @@ export class HomeComponent implements OnInit,OnDestroy {
       this.bestSellerProducts = this.allProducts.filter(product => product.bestSellerProduct == true);
       this.mostPopularProducts = this.allProducts.filter(product => product.featuredProduct == true);
       this.bannerProducts = this.allProducts.filter(product => product.bannerProduct == true);
+      
     },(err) => {
       if(err){
         console.log(err);
       }
+      
     });
   }
 }

@@ -16,6 +16,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './apiservices/auth-interceptor';
 import { AuthGuard } from './apiservices/auth-guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ng6-toastr-notifications';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -49,6 +51,9 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot()
   ],
   providers: [AuthGuard,{provide : HTTP_INTERCEPTORS,useClass : AuthInterceptor, multi : true}],
   bootstrap: [AppComponent]
